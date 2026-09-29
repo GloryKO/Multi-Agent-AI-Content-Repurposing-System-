@@ -1,0 +1,15 @@
+langgraph>=0.2.60
+openai>=1.55.0
+instructor>=1.7.0
+firecrawl-py>=1.7.0
+requests>=2.32.0
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+pydantic>=2.9.0
+pydantic-settings>=2.6.0
+structlog>=24.4.0
+tenacity>=9.0.0
+tiktoken>=0.8.0
+python-dotenv>=1.0.1
+pytest>=8.3.0
+pytest-mock>=3.14.0

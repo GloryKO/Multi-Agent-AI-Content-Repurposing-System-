@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Repurpose — Content Pipeline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Sora:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="hero">
+    <div class="hero-copy">
+      <p class="brand">Repurpose</p>
+      <h1>One source. A full content package.</h1>
+      <p class="lede">
+        Paste a URL or draft. The multi-agent pipeline researches, briefs,
+        writes, critiques, and ships social variants — with cost tracking on every run.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#studio">Run a demo</a>
+        <a class="btn ghost" href="#how">How it works</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="orbit">
+        <span style="--i:0">Scrape</span>
+        <span style="--i:1">Brief</span>
+        <span style="--i:2">Write</span>
+        <span style="--i:3">Critique</span>
+        <span style="--i:4">Social</span>
+        <span style="--i:5">Image</span>
+      </div>
+    </div>
+  </header>
+
+  <section id="how" class="how">
+    <h2>Supervisor + specialists</h2>
+    <p class="section-lede">
+      A deterministic LangGraph supervisor routes nine agents. Critique failures loop back to the writer — capped, never hung.
+    </p>
+    <ol class="steps-rail" id="pipeline-legend">
+      <li data-step="scrape">Scrape</li>
+      <li data-step="summarize">Summarize</li>
+      <li data-step="seo_research">SEO</li>
+      <li data-step="brief">Brief</li>
+      <li data-step="writer">Write</li>
+      <li data-step="critic">Critique</li>
+      <li data-step="repurposer">Repurpose</li>
+      <li data-step="image">Image</li>
+      <li data-step="assembler">Assemble</li>
+    </ol>
+  </section>
+
+  <section id="studio" class="studio">
+    <div class="studio-form-wrap">
+      <h2>Studio</h2>
+      <p class="section-lede">Point it at a source. Watch the agents move.</p>
+
+      <form id="generate-form">
+        <label class="field">
+          <span>Source URL</span>
+          <input id="source_url" name="source_url" type="url" placeholder="https://…" />
+        </label>
+
+        <div class="or-divider"><span>or paste text</span></div>
+
+        <label class="field">
+          <span>Raw text</span>
+          <textarea id="raw_text" name="raw_text" rows="5" placeholder="Paste an article, transcript, or notes…"></textarea>
+        </label>
+
+        <label class="field">
+          <span>Target keyword</span>
+          <input id="target_keyword" name="target_keyword" type="text" required placeholder="ai content automation" value="ai content automation" />
+        </label>
+
+        <label class="field">
+          <span>Brand voice</span>
+          <input id="brand_voice" name="brand_voice" type="text" value="clear, confident, and helpful" />
+        </label>
+
+        <button type="submit" class="btn primary wide" id="submit-btn">Generate package</button>
+        <p class="form-hint" id="form-hint">Uses Firecrawl, Serper, Pexels, and your configured LLM. Typical run: 30s–2min.</p>
+      </form>
+    </div>
+
+    <div class="studio-status" id="status-panel" hidden>
+      <div class="status-head">
+        <h3 id="status-title">Running</h3>
+        <p class="run-id" id="run-id"></p>
+      </div>
+      <ol class="live-steps" id="live-steps"></ol>
+      <p class="status-note" id="status-note"></p>
+      <p class="error-banner" id="error-banner" hidden></p>
+    </div>
+  </section>
+
+  <section id="results" class="results" hidden>
+    <div class="results-top">
+      <div>
+        <h2 id="article-title">Your package</h2>
+        <p class="section-lede" id="article-meta"></p>
+      </div>
+      <div class="cost-chip" id="cost-chip"></div>
+    </div>
+
+    <div class="result-image" id="result-image" hidden>
+      <img id="result-img" alt="" />
+      <p class="credit" id="image-credit"></p>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button type="button" class="tab active" data-tab="article" role="tab" aria-selected="true">Article</button>
+      <button type="button" class="tab" data-tab="twitter" role="tab">X / Twitter</button>
+      <button type="button" class="tab" data-tab="linkedin" role="tab">LinkedIn</button>
+      <button type="button" class="tab" data-tab="email" role="tab">Email</button>
+      <button type="button" class="tab" data-tab="critique" role="tab">Critique</button>
+    </div>
+
+    <article class="tab-panel active" id="panel-article" data-panel="article">
+      <pre id="article-body" class="prose"></pre>
+    </article>
+    <article class="tab-panel" id="panel-twitter" data-panel="twitter" hidden>
+      <div id="twitter-body" class="thread"></div>
+    </article>
+    <article class="tab-panel" id="panel-linkedin" data-panel="linkedin" hidden>
+      <pre id="linkedin-body" class="prose"></pre>
+    </article>
+    <article class="tab-panel" id="panel-email" data-panel="email" hidden>
+      <pre id="email-body" class="prose"></pre>
+    </article>
+    <article class="tab-panel" id="panel-critique" data-panel="critique" hidden>
+      <div id="critique-body" class="critique"></div>
+    </article>
+  </section>
+
+  <footer class="footer">
+    <p>LangGraph multi-agent portfolio demo · supervisor routing · critique loop · publish-ready export</p>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
