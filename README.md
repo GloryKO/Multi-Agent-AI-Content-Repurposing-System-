@@ -6,6 +6,16 @@ draft, repurposed social variants (Twitter/X thread, LinkedIn post, email
 snippet), and a relevant royalty-free image — with full cost/token tracking
 per run.
 
+## Screenshots
+
+| Landing page | Generation in progress |
+|---|---|
+| ![Repurpose landing page showing the multi-agent content pipeline](repurposer1.png) | ![Generation form and live agent progress](repurposer2.png) |
+
+**Generated article**
+
+![Generated SEO article with image and run cost](repurposer3.png)
+
 ## Architecture
 
 A **supervisor** multi-agent graph, built with LangGraph. Every specialist
