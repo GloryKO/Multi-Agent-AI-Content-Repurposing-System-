@@ -6,9 +6,6 @@ draft, repurposed social variants (Twitter/X thread, LinkedIn post, email
 snippet), and a relevant royalty-free image — with full cost/token tracking
 per run.
 
-Built as a portfolio-scale rebuild of a production content-automation system,
-generalized so it isn't tied to any client's NDA'd data.
-
 ## Architecture
 
 A **supervisor** multi-agent graph, built with LangGraph. Every specialist
@@ -145,7 +142,7 @@ Activate the venv first (`source .venv/bin/activate`) for each option below.
 
 #### A. CLI (no server)
 
-Fastest way to sanity-check a real run. Results print to the terminal and
+Fastest way to a real run. Results print to the terminal and
 are written under `outputs/{run_id}/`.
 
 ```bash
@@ -263,7 +260,7 @@ side effects.
 - **Async by design**: generation takes 30s–2min, so it never blocks an HTTP
   request; the API returns a `run_id` immediately and the client polls.
 
-## Next steps / known limitations
+## Next steps(production limitations)
 
 - Run store in `main.py` is in-memory — fine for a demo, but swap for Redis
   + Celery/RQ before running multiple workers in production.
